@@ -1,8 +1,8 @@
 :root {
 	--cf-dark-color: #4f4f4f;
 	--cf-light-color: #eeeeee;
-	--cf-primary-color: #001E43;
-	--cf-secondary-color: #ff993b;
+	--cf-primary-color: rgb(6, 132, 190);
+	--cf-secondary-color: lightblue;
 }
 
 main>.container {
@@ -60,6 +60,20 @@ main>.container {
 	filter: brightness(1, 1) !important;
 	border-color: var(--cf-secondary-color)
 }
+
+/* body styles */
+.appTitle {
+	color: var(--cf-primary-color);
+}
+
+.formBackground{
+	background-color: lightgray;
+}
+.tableHeader {
+	background-color: var(--cf-primary-color);
+	color: var(--cf-light-color);
+}
+
 
 /* Footer Styles */
 .footer {

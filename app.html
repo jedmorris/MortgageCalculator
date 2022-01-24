@@ -63,8 +63,8 @@
 	<main class="flex-shrink-0">
 		<div class="container mt-5">
 			<div class="row">
-				<h1>Loan Calculator</h1>
-				<div class="col">
+				<h1 class="appTitle">Loan Calculator</h1>
+				<div class="col formBackground">
 					<div class="form-group">
 						<label for="loanAmount">Loan Amount</label>
 						<input type="number" name="Loan Amount" id="loanAmount"
@@ -80,10 +80,11 @@
 						<input type="number" name="Interest Rate" id="interestRate"
 							class="form-control" aria-describedby="Interest Rate">
 					</div>
-					<button class="button btn
-					btn-outline-info" type="button" id="btnSubmit">
-						Calculate
-					</button>
+					<div class="d-flex justify-content-end mt-3">
+						<button class="button btn btn-outline-info" type="button" id="btnSubmit">
+							Calculate
+						</button>
+					</div>
 				</div>
 
 				<div class="col">
@@ -93,10 +94,10 @@
 
 				</div>
 			</div>
-			<div class="row">
+			<div class="row mt-3">
 				<div class="col">
 					<table class="table table-striped" id="amoritizationSchedule">
-						<thead>
+						<thead class="tableHeader">
 							<tr>
 								<th>Month</th>
 								<th>Payment</th>
