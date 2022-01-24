@@ -22,19 +22,34 @@ function calcPayment(loanAmount, loanTerm, interestRate) {
 	return monthlyPayment;
 }
 
-function generatePayments(loanAmount, loanTerm, interestRate) {
+function generatePayments(loanAmount, loanTerm, interestRate, monthlyPayment) {
 
 	let paymentArray = [];
 	let paymentObj = {};
 
-	let month = loanTerm;
+	let month = 0;
 	let payment = monthlyPayment;
-	let principal = loanAmount;
-	let interest = interestRate;
-	let totalInterest = 0;
-	let balance = 0;
+	let principal = monthlyPayment - interestPayment;
+	let interestPayment = balance * interestRate / 1200;
+	let totalInterest = interestPayment;
+	let balance = loanAmount - monthlyPayment;
+
+	for (let month = 1; month <= loanTerm.length; month++) {
+
+		Obj[1] = {
+			month: 1++,
+			payment: monthlyPayment,
+			principal: principal,
+			interestPayment: interestRate,
+			totalInterest: balance,
+			balance: 8,
+		};
+		
+		paymentArray.push(paymentObj);
 
 
+
+	}
 
 
 
