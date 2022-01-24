@@ -10,14 +10,15 @@ function getValues() {
 	interestRate = parseFloat(interestRate);
 
 	calcPayment(loanAmount, loanTerm, interestRate);
-
+	generatePayments(loanAmount, loanTerm, interestRate, monthlyPayment);
 
 }
 
 function calcPayment(loanAmount, loanTerm, interestRate) {
-	
-	let monthlyPayment = (loanAmount * (interestRate / 1200) / (1 - Math.pow(1 + interestRate / 1200, - loanTerm)));
+
+	let monthlyPayment = (loanAmount * (interestRate / 1200) / (1 - Math.pow(1 + interestRate / 1200, -loanTerm)));
 	monthlyPayment = monthlyPayment.toFixed(2);
+
 	return monthlyPayment;
 }
 
@@ -27,9 +28,9 @@ function generatePayments(loanAmount, loanTerm, interestRate) {
 	let paymentObj = {};
 
 	let month = loanTerm;
-	let payment = 0;
-	let principal = 0;
-	let interest = 0;
+	let payment = monthlyPayment;
+	let principal = loanAmount;
+	let interest = interestRate;
 	let totalInterest = 0;
 	let balance = 0;
 
