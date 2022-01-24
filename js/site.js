@@ -1,4 +1,4 @@
 // display message to the user
-function getValues () {
-	
+function getValues() {
+	alert("hi sloth");
 }
