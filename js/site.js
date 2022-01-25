@@ -1,22 +1,8 @@
-function getPayments() {
-	alert("hi sloth");
-	let loanAmount = document.getElementById("loanAmount").value;
-	let loanTerm = document.getElementById("loanTerm").value;
-	let interestRate = document.getElementById("interestRate").value;
-
-	loanAmount = Number(loanAmount);
-	loanTerm = parseInt(loanTerm);
-	interestRate = parseFloat(interestRate);
-
-	calcPayment(loanAmount, loanTerm, interestRate);
-
-}
-
 // calculate monthly payment
 function calcPayment(loanAmount, loanTerm, interestRate) {
 
 	let monthlyPayment = (loanAmount * (interestRate / 1200) / (1 - Math.pow(1 + interestRate / 1200, -loanTerm)));
-	monthlyPayment = monthlyPayment.toFixed(2);
+	monthlyPayment = monthlyPayment;
 
 	return monthlyPayment;
 }
@@ -27,50 +13,59 @@ function calcInterest(loanAmount, interestRate) {
 	return curInterest;
 }
 
+// build amoritization schedule
 function getPayments() {
-	alert("hi sloth");
 	let loanAmount = document.getElementById("loanAmount").value;
 	let loanTerm = document.getElementById("loanTerm").value;
 	let interestRate = document.getElementById("interestRate").value;
 
+	// type verification
 	loanAmount = Number(loanAmount);
 	loanTerm = parseInt(loanTerm);
 	interestRate = parseFloat(interestRate);
 
-	calcPayment(loanAmount, loanTerm, interestRate);
+	// get table template
+	let template = document.getElementById("amoritization-schedule");
+	let tableBody = document.getElementById("amoritizationScheduleBody")
+	// clear the table
+	tableBody.innerHTML = "";
 
-}
+	// calc monthly payment 
+	let payment = calcPayment(loanAmount, loanTerm, interestRate);
 
-function generatePayments(loanAmount, loanTerm, interestRate, monthlyPayment) {
+	// set schedule values
+	let principal = 0;
+	let interestPayment = 0;
+	let totalInterest = 0;
+	let balance = loanAmount;
 
+	// create an obj for monthly payments and an array to store paymentObjs
 	let paymentArray = [];
-	let paymentObj = {};
 
-	let month = 0;
-	let payment = monthlyPayment;
-	let principal = monthlyPayment - interestPayment;
-	let interestPayment = balance * interestRate / 1200;
-	let totalInterest = interestPayment;
-	let balance = loanAmount - monthlyPayment;
-
+	// loop to calc monthly data and push into array
 	for (let month = 1; month <= loanTerm.length; month++) {
+		interestPayment = calcInterest(balance, interestRate);
+		totalInterest += interestPayment;
+		principal = payment - interestPayment;
+		balance = balance - principal;
 
-		Obj[1] = {
-			month: 1++,
-			payment: monthlyPayment,
+		let paymentObj = {
+			month: month,
+			payment: payment, 
 			principal: principal,
-			interestPayment: interestRate,
-			totalInterest: balance,
-			balance: 8,
+			interest: interestPayment,
+			totalInterest: totalInterest,
+			balance: balance
 		};
 
+		// push monthly paymentObj into payment array
 		paymentArray.push(paymentObj);
+	}	
+		
+		
 
 
 
 	}
-
-
-
 
 }
