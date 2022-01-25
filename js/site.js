@@ -43,7 +43,7 @@ function getPayments() {
 	let paymentArray = [];
 
 	// loop to calc monthly data and push into array
-	for (let month = 1; month <= loanTerm.length; month++) {
+	for (month = 1; month <= loanTerm.length; month++) {
 		interestPayment = calcInterest(balance, interestRate);
 		totalInterest += interestPayment;
 		principal = payment - interestPayment;
@@ -61,11 +61,4 @@ function getPayments() {
 		// push monthly paymentObj into payment array
 		paymentArray.push(paymentObj);
 	}	
-		
-		
-
-
-
-	}
-
 }
