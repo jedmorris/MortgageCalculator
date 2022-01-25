@@ -1,6 +1,5 @@
-// display message to the user
-function getValues() {
-
+function getPayments() {
+	alert("hi sloth");
 	let loanAmount = document.getElementById("loanAmount").value;
 	let loanTerm = document.getElementById("loanTerm").value;
 	let interestRate = document.getElementById("interestRate").value;
@@ -10,16 +9,36 @@ function getValues() {
 	interestRate = parseFloat(interestRate);
 
 	calcPayment(loanAmount, loanTerm, interestRate);
-	generatePayments(loanAmount, loanTerm, interestRate, monthlyPayment);
 
 }
 
+// calculate monthly payment
 function calcPayment(loanAmount, loanTerm, interestRate) {
 
 	let monthlyPayment = (loanAmount * (interestRate / 1200) / (1 - Math.pow(1 + interestRate / 1200, -loanTerm)));
 	monthlyPayment = monthlyPayment.toFixed(2);
 
 	return monthlyPayment;
+}
+
+// calculate current interest
+function calcInterest(loanAmount, interestRate) {
+	let curInterest = loanAmount * (interestRate / 1200);
+	return curInterest;
+}
+
+function getPayments() {
+	alert("hi sloth");
+	let loanAmount = document.getElementById("loanAmount").value;
+	let loanTerm = document.getElementById("loanTerm").value;
+	let interestRate = document.getElementById("interestRate").value;
+
+	loanAmount = Number(loanAmount);
+	loanTerm = parseInt(loanTerm);
+	interestRate = parseFloat(interestRate);
+
+	calcPayment(loanAmount, loanTerm, interestRate);
+
 }
 
 function generatePayments(loanAmount, loanTerm, interestRate, monthlyPayment) {
@@ -44,7 +63,7 @@ function generatePayments(loanAmount, loanTerm, interestRate, monthlyPayment) {
 			totalInterest: balance,
 			balance: 8,
 		};
-		
+
 		paymentArray.push(paymentObj);
 
 
